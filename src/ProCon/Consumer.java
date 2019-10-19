@@ -3,13 +3,13 @@ package ProCon;
 import java.util.Stack;
 
 public class Consumer extends Thread {
-    private Stack<Integer> stack;
+    private final Stack<Integer> stack;
     public Consumer(Stack<Integer> stack)
     {
         this.stack = stack;
     }
     public void run() {
-        int rndNumber = (int) (Math.random() * 10234);
+        int rndNumber = (int) (Math.random() * 100);
         int count = 0;
         int sum = 0;
 
@@ -24,6 +24,7 @@ public class Consumer extends Thread {
             synchronized (stack){
                 sum+=stack.pop();
                 count++;
+                System.out.println("current sum: " + sum);
             }
         }
 
